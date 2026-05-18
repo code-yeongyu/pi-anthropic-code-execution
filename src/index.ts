@@ -24,7 +24,7 @@ function sanitizeTools(tools: unknown[]): ToolDefinition[] {
 			continue;
 		}
 
-		const shouldStripFunctionVariant = tool.name === "code_execution" && !isCodeExecutionType(tool.type);
+		const shouldStripFunctionVariant = tool["name"] === "code_execution" && !isCodeExecutionType(tool["type"]);
 		if (!shouldStripFunctionVariant) {
 			sanitizedTools.push(tool);
 		}
@@ -55,9 +55,9 @@ export function addAnthropicCodeExecutionToPayload(api: Api | undefined, payload
 		return payload;
 	}
 
-	const tools = Array.isArray(payload.tools) ? payload.tools : [];
+	const tools = Array.isArray(payload["tools"]) ? payload["tools"] : [];
 	const sanitizedTools = sanitizeTools(tools);
-	const hasNativeCodeExecution = sanitizedTools.some((tool) => isCodeExecutionType(tool.type));
+	const hasNativeCodeExecution = sanitizedTools.some((tool) => isCodeExecutionType(tool["type"]));
 	if (!hasNativeCodeExecution) {
 		sanitizedTools.push(CODE_EXECUTION_TOOL);
 	}

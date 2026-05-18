@@ -85,7 +85,7 @@ describe("anthropic-code-execution builtin extension", () => {
 			tools: Array<Record<string, unknown>>;
 		};
 
-		const codeExecutionTools = result.tools.filter((tool) => tool.name === "code_execution");
+		const codeExecutionTools = result.tools.filter((tool) => tool["name"] === "code_execution");
 		expect(codeExecutionTools).toHaveLength(1);
 		expect(codeExecutionTools[0]).toEqual({
 			type: "code_execution_20260120",
@@ -104,7 +104,7 @@ describe("anthropic-code-execution builtin extension", () => {
 			tools: Array<Record<string, unknown>>;
 		};
 
-		const codeExecutionTools = result.tools.filter((tool) => tool.name === "code_execution");
+		const codeExecutionTools = result.tools.filter((tool) => tool["name"] === "code_execution");
 		expect(codeExecutionTools).toHaveLength(1);
 		expect(codeExecutionTools[0]).toEqual({
 			type: "code_execution_20250825",
