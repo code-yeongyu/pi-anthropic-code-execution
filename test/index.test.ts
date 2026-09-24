@@ -141,24 +141,17 @@ describe("isCodeExecutionEnabled", () => {
 		expect(isCodeExecutionEnabled()).toBe(true);
 	});
 
-	it.each([
-		undefined,
-		"",
-		"0",
-		"false",
-		"no",
-		"off",
-		"garbage",
-		"enable",
-		"enabled",
-	])("returns false for non-truthy value %s", (value) => {
-		if (value === undefined) {
-			delete process.env[CODE_EXECUTION_ENV];
-		} else {
-			process.env[CODE_EXECUTION_ENV] = value;
-		}
-		expect(isCodeExecutionEnabled()).toBe(false);
-	});
+	it.each([undefined, "", "0", "false", "no", "off", "garbage", "enable", "enabled"])(
+		"returns false for non-truthy value %s",
+		(value) => {
+			if (value === undefined) {
+				delete process.env[CODE_EXECUTION_ENV];
+			} else {
+				process.env[CODE_EXECUTION_ENV] = value;
+			}
+			expect(isCodeExecutionEnabled()).toBe(false);
+		},
+	);
 });
 
 describe("ANTHROPIC_CODE_EXECUTION_SECTION", () => {
