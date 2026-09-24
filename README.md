@@ -27,15 +27,12 @@ It also appends a system-prompt section for Anthropic sessions indicating native
 The package targets the [`pi`](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent) coding agent. Pi loads extensions from `~/.pi/agent/extensions/`, project `.pi/extensions/`, or via the `--extension` / `-e` CLI flag.
 
 ```bash
-# From npm (once published)
-pi install npm:pi-anthropic-code-execution
-
 # From git
 pi install git:github.com/code-yeongyu/pi-anthropic-code-execution
 
 # Manual placement
 git clone https://github.com/code-yeongyu/pi-anthropic-code-execution ~/.pi/agent/extensions/pi-anthropic-code-execution
-cd ~/.pi/agent/extensions/pi-anthropic-code-execution && npm install
+cd ~/.pi/agent/extensions/pi-anthropic-code-execution && bun install
 
 # Dev / one-shot test
 pi -e /path/to/pi-anthropic-code-execution/src/index.ts
@@ -46,14 +43,13 @@ After installation, restart pi or run `/reload` inside an interactive session.
 ## Development
 
 ```bash
-npm install
-npm test
-npm run typecheck
-npm run check
+bun install
+bun run check
+bun run test
 pi -e ./src/index.ts
 ```
 
-The test suite uses vitest. TypeScript is strict, Node-only, and uses ESM imports with `.js` suffixes.
+The test suite uses vitest. TypeScript is strict, Node-only, and uses ESM imports with `.js` suffixes. Development uses Bun ≥1.4.2.
 
 ## Origin
 
