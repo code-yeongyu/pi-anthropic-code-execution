@@ -1,6 +1,6 @@
 {
 	"name": "pi-anthropic-code-execution",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Anthropic native code execution policy extension for the pi coding agent. Ensures native code_execution tools are present on anthropic-messages payloads when opt-in is enabled and appends code execution guidance to the system prompt.",
 	"type": "module",
 	"license": "MIT",
